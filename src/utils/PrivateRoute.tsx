@@ -17,7 +17,7 @@ const PrivateRoute = ({ children }: IPrivateRoute) => {
     if (floorAccess[floorIndex] === false) {
       navigate("/Forbidden")
     }
-  }, []);
+  }, [index]);
 
   return <>{children}</>;
 };
