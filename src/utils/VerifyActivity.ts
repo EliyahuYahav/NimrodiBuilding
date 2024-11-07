@@ -7,10 +7,18 @@ interface IuseActivityParams {
 }
 
 const useIsVerified = ({ activity, role, activities }: IuseActivityParams) => {
-  const indexRole = roles.findIndex((listRoles)=>{listRoles == role}) 
-  const indexActivity = activities.findIndex((listOfActivity)=>{listOfActivity == activity}) 
-  if (indexRole <= indexActivity) return true
-  else return false
+  
+  const indexOfRole = roles.findIndex((listRoles) => {
+    return listRoles == role;
+  });
+  const indexOfActivity = activities.findIndex((listOfActivity) => {
+    return listOfActivity == activity;
+  });
+  return (
+    indexOfActivity !== -1 &&
+    indexOfRole !== -1 &&
+    indexOfRole >= indexOfActivity
+  );
 };
 
 export default useIsVerified;
