@@ -8,7 +8,7 @@ export const RoleSlice = createSlice({
     name: "RoleFloor",
     reducers: {
         setRole: (state, actions:PayloadAction<number>)=>{
-        state.person = Person[actions.payload]
+        state.role = Person[actions.payload]
       }
     },
   });

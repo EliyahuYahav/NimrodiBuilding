@@ -7,10 +7,11 @@ import optionalroles from "../../data/roles.json";
 import "./Reception.css";
 
 const Reception: React.FC = () => {
-  const floorAccess = useSelector(
-    (state: { floorAccess: { floorAccess: [boolean, boolean, boolean, boolean, boolean] } }) => state.floorAccess.floorAccess
-  );
-  const currentRole = useSelector((state: { role: string }) => state.role);
+  const floorAccess = useSelector((person: { floorAccess: {floorAccess: [boolean, boolean, boolean, boolean, boolean]} }) => person.floorAccess.floorAccess);
+
+  const currentRole = useSelector((state: { role: { role: string } }) => state.role.role);
+  console.log(currentRole)
+
   const { getFloorByIndex } = useBuildingData();
   const dispatch = useDispatch();
 

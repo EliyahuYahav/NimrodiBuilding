@@ -5,7 +5,7 @@ import  RoleReducer  from "./rolereducer";
 export const store =  configureStore({
     reducer:{
         floorAccess:AuthReducer,
-        Role: RoleReducer
+        role: RoleReducer
     }
 })
 

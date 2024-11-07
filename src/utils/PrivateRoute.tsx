@@ -1,24 +1,21 @@
 import { ReactNode, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router";
-import { RootState } from "../store/store";
-import Forbidden from "../pages/Forbidden/Forbidden";
+import { useNavigate, useParams } from "react-router";
 
 interface IPrivateRoute {
   children: ReactNode;
 }
 
 const PrivateRoute = ({ children }: IPrivateRoute) => {
-  const { hasAccess } = useSelector(
-    (state: RootState): any => state.floorAccess.access
-  );
+  const floorAccess = useSelector((person: { floorAccess: {floorAccess: [boolean, boolean, boolean, boolean, boolean]} }) => person.floorAccess.floorAccess);
 
-  const { index } = useParams<{ index: string }>();
-  const floorIndex = parseInt(index || "0");
-
+ const { index } = useParams<{ index: string }>();
+ const floorIndex = parseInt(index || "0");
+ const navigate = useNavigate();
+ 
   useEffect(() => {
-    if (!hasAccess[floorIndex]) {
-        <Forbidden/>
+    if (floorAccess[floorIndex] === false) {
+      navigate("/Forbidden")
     }
   }, []);
 

@@ -7,7 +7,7 @@ export const AuthSlice = createSlice({
     name: "AuthFloor",
     reducers: {
       changeAccess: (state, actions:PayloadAction<number>)=>{
-        state.access[actions.payload].access = true
+        state.floorAccess[actions.payload] =  !state.floorAccess[actions.payload]
       }
     },
   });
