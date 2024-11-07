@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import DataBuilding from "../data/building.json"
 
 interface Floor {
   name: string;
@@ -11,21 +12,19 @@ interface Floor {
 const useBuildingData = () => {
   const [buildingData, setBuildingData] = useState<Floor[]>([]);
 
-  //FILL HERE LOGIC TO SET THE BUILDING DATA
+  useEffect(() => {
+    setBuildingData(DataBuilding)
+  }, [])
 
-
-  const getFloorByIndex = (floorIndex:number): Floor |undefined =>
-  {
-    //FILL HERE
+  const getFloorByIndex = (floorIndex:number): Floor |undefined =>{
+    return buildingData[floorIndex]
   }
+
   const getListOfActivities = ():string[]=>{
-    //FILL HERE
+    return buildingData.map((floor)=>{return floor.activity})
   }
-  return {
-    buildingData,
-    getFloorByIndex,
-    getListOfActivities
-  };
+
+  return { buildingData, getFloorByIndex, getListOfActivities};
 };
 
 export default useBuildingData;
